@@ -29,7 +29,7 @@ class KisiKayitFragment : Fragment() {
         return tasarim.root
     }
 
-    //vm bağlama
+    //vm bağlama onCreate içinde
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val temp:KisiKayitFragmentViewModel by viewModels()

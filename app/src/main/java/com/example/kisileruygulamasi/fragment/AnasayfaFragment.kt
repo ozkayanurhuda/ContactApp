@@ -35,23 +35,26 @@ class AnasayfaFragment : Fragment(), SearchView.OnQueryTextListener {
         //toolbar için
         (activity as AppCompatActivity).setSupportActionBar(tasarim.toolbarAnasayfa)
 
-        //live data dinleme
+        //viewmodeldeki live data dinleme
+        //adapterdan viewmodeldaki func lara wrişim için adaptera param olarak viewmodel ekledik (silme için)
         viewModel.kisilerListesi.observe(viewLifecycleOwner, { kisilerListesi->
             adapter= KisilerAdapter(requireContext(),kisilerListesi,viewModel)
             tasarim.adapter=adapter
         })
-
         return tasarim.root
     }
-    //sayfa gecisi view ister
+
+    //sayfa gecisi view ister(kisi kayıt sayfasına geçiş)
     fun fabTikla(view:View) {
         Navigation.findNavController(view).navigate(R.id.kayitGecis)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //search işlemini gerçekleştirebilmek için
         setHasOptionsMenu(true)
 
+        //viewmodelı bağla
         val temp:AnasayfaFragmentViewModel by viewModels()
         viewModel=temp
     }
@@ -59,12 +62,17 @@ class AnasayfaFragment : Fragment(), SearchView.OnQueryTextListener {
 
 //toolbar menuyu bağla
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    //sayfayla toolbar menuyu bağladım
         inflater.inflate(R.menu.toolbar_arama, menu)
+    //itema tıklayınca aramayı tetikledim
         val item = menu.findItem(R.id.action_ara)
+    //itema searchview özelliği verdim
         val searchView=item.actionView as SearchView
+    //searchviewa sayfaya bağladım
         searchView.setOnQueryTextListener(this)
         super.onCreateOptionsMenu(menu, inflater)
     }
+
 //arama sonucları için implement -----------------------
     override fun onQueryTextSubmit(query: String): Boolean {
 
@@ -78,6 +86,7 @@ class AnasayfaFragment : Fragment(), SearchView.OnQueryTextListener {
 
         Log.e("Harf girdikçe ", newText)
         viewModel.ara(newText)
+
         return true
     }
 

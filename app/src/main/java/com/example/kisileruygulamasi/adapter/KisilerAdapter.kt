@@ -18,7 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 //context ekle mutlaka(olmasa da olur )
 //implement constructors deyip 3ini de ekle
 //veri kümesi için adapter
-//sil için sona ekledik viewmodel
+//sil için sona ekledik viewmodel***
 class KisilerAdapter(var mContext: Context, var kisilerListesi:List<Kisiler>, var viewModel: AnasayfaFragmentViewModel)
     : RecyclerView.Adapter<KisilerAdapter.CardTasarimTutucu>() {
 

@@ -44,7 +44,7 @@ class KisiDetayFragment : Fragment() {
         viewModel=temp
     }
 
-    //vm
+    //vm- params xmlden gönderildi
     fun buttonGuncelle(kisi_id:Int,kisi_ad:String, kisi_tel:String) {
         Log.e("Kişi Güncelle","$kisi_id - $kisi_ad - $kisi_tel")
         viewModel.guncelle(kisi_id, kisi_ad,kisi_tel)
